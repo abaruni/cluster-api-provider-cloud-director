@@ -98,7 +98,7 @@ tools-dir:
 
 CONTROLLER_GEN := $(GITROOT)/tools/controller-gen
 controller-gen: tools-dir ## Download controller-gen locally if necessary.
-	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.4.1)
+	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.10.0)
 
 CONVERSION_GEN_BIN := conversion-gen
 CONVERSION_GEN_DOCKERFILE := Dockerfile-ConversionGen

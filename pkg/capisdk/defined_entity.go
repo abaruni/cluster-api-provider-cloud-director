@@ -456,9 +456,10 @@ func (capvcdRdeManager *CapvcdRdeManager) convertFrom100Format(ctx context.Conte
 }
 
 // ConvertToLatestRDEVersionFormat updates the RDE version. The upgraded RDE will only contain minimal information related to the cluster after upgrade.
-//  CAPVCD will reconcile the RDE eventually with proper data by CAPVCD.
-//  The function attempts upgrade multiple times as defined by MaxUpdateRetries to avoid failures due to incorrect ETag.
-// 	"entity.status.persistentVolumes" and "entity.status.virtualIPs" in the existing RDE will be retained in the upgraded RDE.
+//
+//	 CAPVCD will reconcile the RDE eventually with proper data by CAPVCD.
+//	 The function attempts upgrade multiple times as defined by MaxUpdateRetries to avoid failures due to incorrect ETag.
+//		"entity.status.persistentVolumes" and "entity.status.virtualIPs" in the existing RDE will be retained in the upgraded RDE.
 func (capvcdRdeManager *CapvcdRdeManager) ConvertToLatestRDEVersionFormat(ctx context.Context, rdeID string) (*swagger.DefinedEntity, error) {
 	if !capvcdRdeManager.IsCapvcdEntityTypeRegistered(rdeType.CapvcdRDETypeVersion) {
 		return nil, fmt.Errorf("CAPVCD entity type with version [%s] not registered", rdeType.CapvcdRDETypeVersion)
